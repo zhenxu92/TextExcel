@@ -2,6 +2,8 @@ package textExcel;
 
 public class PercentCell extends ValueCell
 {
+	// 0.089
+	// 0.89
 	private String str;
 	
 	public PercentCell(String str) {
@@ -19,11 +21,12 @@ public class PercentCell extends ValueCell
 	public String abbreviatedCellText()
 	{
 		// TODO Auto-generated method stub
-		if (str.length() < 10) {
-			return str;
-		} else {
-			return str.substring(0, 10);			
-		}
+		// parse str to double first
+		double value = Double.parseDouble(this.str);
+		value *= 100;
+		String output = Integer.toString((int)value);
+		output += "%";
+		return output;
 	}
 
 	@Override
